@@ -1,17 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ComponentesModule } from './componentes/componentes.module';
+import { FormsModule } from '@angular/forms';
+//import {NgbModule, NgbAlert} from '@ng-bootstrap/ng-bootstrap';
+//firebase
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule} from '@angular/fire/firestore';
-
-
-
-
-
-
+import { LoginComponent } from './componentes/login/login.component';
 
 var firebaseConfig = {
   apiKey: "AIzaSyAZ1CKko6Yd96E653HF4dCymaNjv9phgyg",
@@ -24,19 +21,21 @@ var firebaseConfig = {
 };
 
 
-
 @NgModule({
-  declarations: [AppComponent, ],
+  declarations: [
+    AppComponent,
+    LoginComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ComponentesModule,
-    AngularFirestoreModule,
+    FormsModule,
     AngularFireModule.initializeApp(firebaseConfig),
-
+    AngularFirestoreModule,
+    //NgbModule,
+    //NgbAlert
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  schemas:[CUSTOM_ELEMENTS_SCHEMA]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

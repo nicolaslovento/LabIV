@@ -1,0 +1,92 @@
+.cont{
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../assets/imagenes/fondo-login.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.login{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  padding:20px;
+ border-style: solid;
+  border-color: blue;
+  border-radius: 5px;
+  background-color:rgb(253, 253, 253,0.5);
+
+}
+
+.login #alert-error{
+  width: 239px;
+  font-size: 17px;
+}
+
+.registro #alert-error{
+  width: 310px;
+  height: 40px;
+  font-size: 13px;
+}
+
+.registro{
+  display: flex;
+  justify-content: center;
+
+  width: auto;
+  height: auto;
+  padding:20px;
+ border-style: solid;
+  border-color: green;
+  border-radius: 5px;
+  background-color:rgb(253, 253, 253,0.5);
+}
+
+.registro input{
+  height: 30px;
+}
+
+.login label{
+  color:black;
+}
+
+.login #btn-registro{
+
+  width: 240px;
+}
+
+.login #btn-limpiar{
+  width: 100px;
+  color:white;
+
+}
+
+.login #btn-ingresar{
+  width: 100px;
+  margin-left: 40px;
+
+}
+
+.registro #btn-ingresar{
+  width: 100px;
+  margin-left: 13px;
+
+}
+
+.registro #btn-limpiar{
+  width: 100px;
+  color:white;
+
+}
+
+#btn-cancelar{
+  margin-right: 10px;
+}
