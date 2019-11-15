@@ -11,15 +11,12 @@ import { FirebaseService } from '../../servicios/firebase.service';
 export class LoginComponent implements OnInit {
 
   correo:string="";
-  nombre:string="";
-  apellido:string="";
   clave:string="";
-  claveRepetida:string="";
-
-  mostrarRegistro=false;
-  mostrarError=false;
-  error="";
-
+  error=false;
+  mostrarAlertSuccess=false;
+  mostrarAlertDanger=false;
+  mensajeAlert="";
+  class:string="";
 
   constructor(
 
@@ -40,51 +37,51 @@ export class LoginComponent implements OnInit {
 
     if(this.correo==""){
 
-      this.error="Debe ingresar un correo.";
+      this.mensajeAlert="Debe ingresar un correo.";
       vacios++;
 
     }
 
-
-
     if(this.clave==""){
 
-      this.error="Debe ingresar una clave.";
+      this.mensajeAlert="Debe ingresar una clave.";
       vacios++;
 
     }
 
     if(this.correo.indexOf('@')==-1){
 
-      this.error="El correo debe tener un formato válido.";
+      this.mensajeAlert="El correo debe tener un formato válido.";
       errores++;
 
     }
 
     if(this.clave.length>0 && this.clave.length<5){
 
-      this.error="La clave debe tener al menos 5 dígitos.";
+      this.mensajeAlert="La clave debe tener al menos 5 dígitos.";
       errores++;
 
     }
 
 
     if(vacios>=2){
-      this.mostrarError=true;
-      this.error="No puede haber campos vacíos.";
+      this.mostrarAlertDanger=true;
+      this.mensajeAlert="No puede haber campos vacíos.";
+     
       return true;
     }
 
     if(vacios==1){
-      this.mostrarError=true;
-
+     
+      this.mostrarAlertDanger=true;
       return true;
     }
 
 
 
     if(errores>0){
-      this.mostrarError=true;
+      this.mostrarAlertDanger=true;
+      
       return true;
     }
 
@@ -96,13 +93,13 @@ export class LoginComponent implements OnInit {
     switch(usuario.tipo){
       case 'administrador':
         alert("bienvenido admin")
-        this.router.navigateByUrl('menu-admin');
+        this.router.navigateByUrl('home-adm');
       break;
       case 'profesor':
-        this.router.navigateByUrl('menu-cliente');
+        this.router.navigateByUrl('home-cliente');
       break;
       case 'alumno':
-        this.router.navigateByUrl('menu-especialista');
+        this.router.navigateByUrl('home-alumno');
       break;
 
     }
@@ -114,11 +111,13 @@ export class LoginComponent implements OnInit {
 
       this.dbService.verificarUsuario(this.correo,this.clave).then((user)=>{
         console.log(user);
+        localStorage.setItem("user",JSON.stringify(user));
         this.redireccionar(user);
-      }).catch((error)=>{
 
-        this.error=error;
-        this.mostrarError=true;
+      }).catch((error)=>{
+        this.error=true;
+        this.mensajeAlert=error;
+        this.mostrarAlertDanger=true;
       });
     }
 

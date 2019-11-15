@@ -1,43 +1,86 @@
 <div class="cont">
 
-  <div class="registro" >
+    <div class="registro">
 
-      <form>
+        <form>
+                <div *ngIf="mostrarQr">
+                        <mi-qr [data]="this.entidad"></mi-qr>
+                </div>
 
-          <div class="form-group">
-              <label for="correo">Correo:</label>
-              <input type="email" class="form-control" id="correo"  aria-describedby="emailHelp" name="correo" [(ngModel)]="correo">
-              <small id="info" class="form-text text-muted">Ingrese un correo válido.</small>
-          </div>
 
-          <div class="form-group">
-              <label for="clave">Clave:</label>
-              <input type="password" class="form-control" id="clave" name="clave" [(ngModel)]="clave">
-              <small id="info" class="form-text text-muted">Mínimo de 6 caracteres.</small>
-          </div>
 
-          <div class="form-group">
-              <label for="exampleFormControlSelect1">Tipo</label>
-              <select class="form-control" id="exampleFormControlSelect1">
-                <option>Administrador</option>
-                <option>Profesor</option>
-                <option>Alumno</option>
-              </select>
-          </div>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label for="correo">Correo:</label>
+                        <input type="email" class="form-control" id="correo" aria-describedby="emailHelp" name="correo"
+                            [(ngModel)]="correo">
+                        <small id="info" class="form-text text-muted">Ingrese un correo válido.</small>
+                    </div>
+                </div>
+            </div>
 
-          <div class="form-group">
-              <button id="btn-volver" class="btn btn-danger" (click)="this.router.navigateByUrl('login')">Volver</button>
-              <button id="btn-limpiar" type="reset" class="btn btn-warning">Limpiar</button>
-              <button id="btn-registrar" class="btn btn-primary" >Registrar</button>
-          </div>
 
-          <div *ngIf="mostrarError" id="alert-error" class="alert alert-danger alert-dismissible fade show" role="alert">
-                  <strong>{{this.error}}</strong>
-                  <button type="button" class="close" (click)="mostrarError=false">x</button>
-          </div>
-      </form>
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-group">
+                        <label for="clave">Clave:</label>
+                        <input type="password" class="form-control" id="clave" name="clave" [(ngModel)]="clave">
+                        <small id="info" class="form-text text-muted">Mínimo de 5 caracteres.</small>
+                    </div>
+                </div>
+            </div>
 
-  </div>
+
+            <div class="row">
+                <div class="col-sm">
+
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect1">Tipo</label>
+                        <select class="form-control" id="exampleFormControlSelect1" name="tipo" [(ngModel)]="tipo">
+                            <option value="administrador">Administrador</option>
+                            <option value="profesor">Profesor</option>
+                            <option value="alumno">Alumno</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm">
+                    <mi-captcha (verificar)=verificar($event)></mi-captcha>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm">
+                    <div class="form-group">
+                        <button id="btn-volver" class="btn btn-danger"
+                            (click)="this.router.navigateByUrl('')">Volver</button>
+                        <button id="btn-limpiar" type="reset" class="btn btn-warning">Limpiar</button>
+                        <button id="btn-registrar" class="btn btn-primary" (click)="registrar()">Registrar</button>
+                    </div>
+                </div>
+            </div>
+
+            
+            
+
+            <div *ngIf="mostrarAlertSuccess" id="msjAlert" class="alert alert-success alert-dismissible fade show"
+                role="alert">
+                <strong>{{this.mensajeAlert}}<button type="button" class="close"
+                        (click)="mostrarAlertSuccess=false">x</button></strong>
+            </div>
+
+            <div *ngIf="mostrarAlertDanger" id="msjAlert" class="alert alert-danger alert-dismissible fade show"
+                role="alert">
+                <strong>{{this.mensajeAlert}}<button type="button" class="close"
+                        (click)="mostrarAlertDanger=false">x</button></strong>
+            </div>
+
+        </form>
+
+    </div>
 
 
 

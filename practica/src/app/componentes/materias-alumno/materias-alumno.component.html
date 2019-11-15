@@ -1,0 +1,23 @@
+<div *ngIf="this.materias">
+  <table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col" align="center">Estás inscripto en estas materias:</th>
+           
+    
+        </tr>
+      <tr>
+        <th scope="col">Numero de materia</th>
+        <th scope="col">Nombre de materia</th>
+
+      </tr>
+    </thead>
+    <tbody >
+      <tr *ngFor="let m of this.materias">
+        <td>{{m.materiaId}}</td>
+        <td>{{m.materiaNombre}}</td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

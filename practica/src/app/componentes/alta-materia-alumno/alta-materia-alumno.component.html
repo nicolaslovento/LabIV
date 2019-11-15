@@ -1,0 +1,66 @@
+<div class="screen">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <div class="toolbar">
+        <button class="btn btn-primary" (click)="this.router.navigateByUrl('menu-admin')"><span><i
+                    class="fas fa-reply"></i></span></button>
+        <div align="center" class="titulo"><label> Altas</label> </div>
+        <div class="btnSalir" (click)="this.router.navigateByUrl('')"><button class="btn btn-danger"><span>Cerrar
+                    sesión<i class="fas fa-sign-out-alt"></i></span></button></div>
+    </div>
+
+    <div class="container">
+
+
+        <div class="login">
+
+            <div class="form">
+
+                <form>
+
+
+
+
+
+                        <div class="row">
+                                <div class="col-sm">
+                                    <div class="form-group">
+                                        <div class="input-group-append">
+                                            <label>Materias disponibles:</label>
+                                        </div>
+                                        <select class="custom-select" id="inputGroupSelect02" name="materia"
+                                            [(ngModel)]="materia">
+                                            <option [value]="m.id" *ngFor="let m of this.materias" [ngClass]="m.cupos>20 ? 'rojo':'verde'">{{m.nombre }}</option>
+                                        </select>
+        
+                                    </div>
+                                </div>
+                            </div>
+
+                    <div class="row">
+
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <button id="btn-ingresar" class="btn btn-success btn-block"
+                                    (click)="anotarseEnMateria()">Anotarse</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div *ngIf="mostrarError" id="alert-error" class="alert alert-danger alert-dismissible fade show"
+                        role="alert">
+                        <strong>{{error}}</strong>
+                        <button type="button" class="close" (click)="mostrarError=false">x</button>
+
+                    </div>
+
+                </form>
+
+
+            </div>
+        </div>
+    </div>

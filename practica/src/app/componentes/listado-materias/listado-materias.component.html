@@ -1,0 +1,20 @@
+<div *ngIf="this.materias">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Cuatrimestre</th>
+        <th scope="col">Cupos</th>
+        <th scope="col">Profesor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let m of this.materias">
+        <td>{{m.nombre}}</td>
+        <td>{{m.cuatrimestre}}</td>
+        <td>{{m.cupos}}</td>
+        <td>{{m.profesor}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

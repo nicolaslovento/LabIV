@@ -1,0 +1,39 @@
+
+<div class="form-group">
+    <label for="correo">Filtrar por:</label>
+    <div class="input-group-append">
+        <label>Filtrar Por:</label>
+    </div>
+    <select class="custom-select" id="inputGroupSelect02" name="tipo" [(ngModel)]="tipo" (change)="cargarUsuarios($event.target.value)">
+        <option value="" selected>Elija uno..</option>
+        <option value="administrador" >Administradores</option>
+        <option value="profesor" >profesores</option>
+        <option value="alumno" >alumnos</option>
+       
+    </select>
+</div>
+
+
+<div *ngIf="this.usuarios" id="pdfTable" #pdfTable>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Correo</th>
+                <th scope="col">Clave</th>
+                <th scope="col">Tipo</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let u of this.usuarios">
+                <td>{{u.correo}}</td>
+                <td>{{u.clave}}</td>
+                <td>{{u.tipo}}</td>
+
+            </tr>
+        </tbody>
+    </table>
+    <div> <button  (click)="downloadAsPDF()">Export To PDF</button></div>
+    <div> <button  (click)="generadorCSV()">Export To CSV</button></div>
+    
+</div>

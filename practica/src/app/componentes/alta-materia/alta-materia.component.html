@@ -1,0 +1,124 @@
+<div class="screen">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <div class="toolbar">
+        <button class="btn btn-primary" (click)="this.router.navigateByUrl('menu-admin')"><span><i
+                    class="fas fa-reply"></i></span></button>
+        <div align="center" class="titulo"><label> Altas</label> </div>
+        <div class="btnSalir" (click)="this.router.navigateByUrl('')"><button class="btn btn-danger"><span>Cerrar
+                    sesión<i class="fas fa-sign-out-alt"></i></span></button></div>
+    </div>
+
+    <div class="container">
+
+
+        <div class="login">
+
+            <div class="form">
+
+                <form>
+
+
+
+
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label for="correo">Nombre:</label>
+                                <input type="text" class="form-control" id="nombre" aria-describedby="emailHelp"
+                                    name="nombre" [(ngModel)]="nombre">
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label for="correo">Cuatrimestre:</label>
+                                <div class="input-group-append">
+                                    <label>Numero:</label>
+                                </div>
+                                <select class="custom-select" id="inputGroupSelect02" name="cuatrimestre"
+                                    [(ngModel)]="cuatrimestre">
+                                    <option value="" selected>Elija uno..</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <label for="correo">Cupos:</label>
+                                <input type="number" class="form-control" id="cupos" aria-describedby="emailHelp"
+                                    name="cupos" [(ngModel)]="cupos">
+                                <small id="correo" class="form-text text-muted">Máximo 30 cupos.</small>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <div class="input-group-append">
+                                    <label>Profesores:</label>
+                                </div>
+                                <select class="custom-select" id="inputGroupSelect02" name="profesor"
+                                    [(ngModel)]="profesor">
+                                    <option [value]="p.correo" *ngFor="let p of this.profesores">{{p.correo }}</option>
+                                </select>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-sm">
+                            <div class="form-group">
+                                <button id="btn-ingresar" class="btn btn-success btn-block"
+                                    (click)="cargarMateria()">Registrar materia</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm">
+                          
+                                <re-captcha (resolved)="resolved($event)" siteKey="6LcZ5cIUAAAAAPYapL22ZChvjyY8uMSSDNdPv0gj"></re-captcha>
+                        </div>
+                    </div>
+            
+
+
+            <div *ngIf="mostrarError" id="alert-error" class="alert alert-danger alert-dismissible fade show"
+                role="alert">
+                <strong>{{error}}</strong>
+                <button type="button" class="close" (click)="mostrarError=false">x</button>
+
+            </div>
+
+            </form>
+
+
+        </div>
+    </div>
+</div>
