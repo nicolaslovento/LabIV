@@ -1,0 +1,21 @@
+<div class="content">
+    <div class="card" style="width: 18rem;">
+        <img src="../../../assets/imagenes/materia.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Ver materias a cargo</h5>
+          <p class="card-text">Aquí se podrá ver las materias que tiene a cargo.</p>
+          <a  class="btn btn-primary" (click)="this.router.navigateByUrl('materias-profesor')">Ver materias</a>
+        </div>
+      </div>
+    
+      <div class="card" style="width: 18rem;">
+        <img src="../../../assets/imagenes/usuarios.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Mis alumnos</h5>
+          <p class="card-text">Aquí se verán los alumnos inscriptos en materia que dicta.
+        </p>
+          <a  class="btn btn-primary" (click)="this.router.navigateByUrl('alumnos-profesor')">Ver mis alumnos</a>
+        </div>
+      </div>
+    </div>
+    

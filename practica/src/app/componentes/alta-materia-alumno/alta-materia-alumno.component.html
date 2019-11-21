@@ -1,13 +1,6 @@
+<button id="btn-atras" class="btn btn-success" (click)="this.router.navigateByUrl('home-alumno')">Atras</button>
 <div class="screen">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <div class="toolbar">
-        <button class="btn btn-primary" (click)="this.router.navigateByUrl('menu-admin')"><span><i
-                    class="fas fa-reply"></i></span></button>
-        <div align="center" class="titulo"><label> Altas</label> </div>
-        <div class="btnSalir" (click)="this.router.navigateByUrl('')"><button class="btn btn-danger"><span>Cerrar
-                    sesión<i class="fas fa-sign-out-alt"></i></span></button></div>
-    </div>
+    
 
     <div class="container">
 
@@ -30,7 +23,7 @@
                                         </div>
                                         <select class="custom-select" id="inputGroupSelect02" name="materia"
                                             [(ngModel)]="materia">
-                                            <option [value]="m.id" *ngFor="let m of this.materias" [ngClass]="m.cupos>20 ? 'rojo':'verde'">{{m.nombre }}</option>
+                                            <option [value]="m.id" *ngFor="let m of this.materias" [ngClass]="m.cupos>20 ? 'rojo':'verde'">{{m.nombre }} --- Cupos: {{m.cupos}}</option>
                                         </select>
         
                                     </div>
@@ -49,7 +42,12 @@
 
 
 
-
+                    <div *ngIf="mostrarExito" id="alert-error" class="alert alert-success alert-dismissible fade show"
+                    role="alert">
+                    <strong>{{exito}}</strong>
+                    <button type="button" class="close" (click)="mostrarExito=false">x</button>
+    
+                    </div>
 
                     <div *ngIf="mostrarError" id="alert-error" class="alert alert-danger alert-dismissible fade show"
                         role="alert">

@@ -1,31 +1,36 @@
-<button id="btn-atras" class="btn btn-success" (click)="this.router.navigateByUrl('home-adm')">Atras</button>
+<button id="btn-atras" class="btn btn-success" (click)="this.router.navigateByUrl('home-profesor')">Atras</button>
 
 <div class="content">
 
-  <div class="tabla">
-
-
+  <div class="tabla class overflow-auto">
     <div *ngIf="this.materias">
-      <table class="table">
+      <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">Nombre</th>
+            <th scope="col" align="center">Materias a cargo:</th>
+
+
+          </tr>
+          <tr>
+            <th scope="col">Numero de materia</th>
+            <th scope="col">Nombre de materia</th>
             <th scope="col">Cuatrimestre</th>
             <th scope="col">Cupos</th>
-            <th scope="col">Profesor</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let m of this.materias">
+            <td>{{m.id}}</td>
             <td>{{m.nombre}}</td>
             <td>{{m.cuatrimestre}}</td>
             <td>{{m.cupos}}</td>
-            <td>{{m.profesor}}</td>
+
+
+
           </tr>
         </tbody>
       </table>
     </div>
-
   </div>
 
 </div>

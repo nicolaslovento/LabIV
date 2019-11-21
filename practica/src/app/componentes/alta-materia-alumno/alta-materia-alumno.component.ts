@@ -11,7 +11,8 @@ export class AltaMateriaAlumnoComponent implements OnInit {
 
   materia;
   materias = new Array();
-
+  mostrarExito=false;
+  exito="";
   constructor(
     private serviceFirestore: FirebaseService,
     private router: Router) { }
@@ -27,6 +28,7 @@ export class AltaMateriaAlumnoComponent implements OnInit {
     await this.serviceFirestore.traerMaterias().then((materias: any) => {
 
       this.materias = materias;
+      console.log(this.materias);
     });
 
   }
@@ -34,7 +36,7 @@ export class AltaMateriaAlumnoComponent implements OnInit {
   traerMateria() {
     for (let i = 0; i < this.materias.length; i++) {
 
-      if (this.materias[i].id= this.materia) {
+      if (this.materias[i].id== this.materia) {
         return this.materias[i];
       }
     }
@@ -43,11 +45,18 @@ export class AltaMateriaAlumnoComponent implements OnInit {
 }
 
 anotarseEnMateria(){
+ 
   let materia = this.traerMateria();
-  
+  console.log(this.materia);
+  materia.cupos--;
   let alumno = JSON.parse(localStorage.getItem("user"));
   this.serviceFirestore.inscribirseAMateria(materia, alumno).then(() => {
-    console.log("subido");
+
+    this.serviceFirestore.modificarMateria(materia).then(()=>{
+      this.exito="Se ha inscripto en la materia: "+materia.nombre;
+      this.mostrarExito=true;
+    })
+    
   }).catch(error => {
     console.log(error);
   })

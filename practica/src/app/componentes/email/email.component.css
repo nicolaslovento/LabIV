@@ -1,4 +1,17 @@
-.email{
+.extra-top{
     
-    font-size: 500px;
+    font-size: 30px;
+}
+
+.navbar{
+    width: 100%;
+}
+
+.navbar label{
+    margin:auto;
+}
+
+.navbar .btn{
+    float: right;
+   
 }

@@ -1,32 +1,7 @@
-.toolbar{
-    position:flex;
-    width: 100%;
-    height: 60px;
-    background-color: blue;
-}
-
-.toolbar button{
-    position: absolute;
-    margin: 1%;
-}
-
-.titulo{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top:4%;
-    font-size: 30px;
-    color:beige;
-}
-
-.btnSalir{
-    position: absolute;
-    width: 140px;
-    height: 30px;
-    right: 1%;
+#btn-atras{
+    position: fixed;
     top:2%;
 }
-
 
 
 .login{

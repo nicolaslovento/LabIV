@@ -1,3 +1,9 @@
-<div *ngIf="this.user" class="email">
-    <h3>{{this.user.correo}}</h3>
+<div *ngIf="this.user != null" class="d-flex justify-content-around extra-top extra-bottom">
+    <nav class="navbar navbar-dark bg-primary">
+        
+      <label>Correo: {{this.user.correo}}</label>
+      
+        <button type="button" class="btn btn-danger" (click)="desloguear()">Cerrar Sesión</button>
+    </nav>
+    
 </div>

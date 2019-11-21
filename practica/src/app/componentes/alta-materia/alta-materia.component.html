@@ -1,13 +1,6 @@
 <div class="screen">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <div class="toolbar">
-        <button class="btn btn-primary" (click)="this.router.navigateByUrl('menu-admin')"><span><i
-                    class="fas fa-reply"></i></span></button>
-        <div align="center" class="titulo"><label> Altas</label> </div>
-        <div class="btnSalir" (click)="this.router.navigateByUrl('')"><button class="btn btn-danger"><span>Cerrar
-                    sesión<i class="fas fa-sign-out-alt"></i></span></button></div>
-    </div>
+    <button id="btn-atras" class="btn btn-success" (click)="this.router.navigateByUrl('home-adm')">Atras</button>
+        
 
     <div class="container">
 
@@ -26,7 +19,7 @@
                         <div class="col-sm">
                             <div class="form-group">
                                 <label for="correo">Nombre:</label>
-                                <input type="text" class="form-control" id="nombre" aria-describedby="emailHelp"
+                                <input type="text" class="form-control"  aria-describedby="emailHelp"
                                     name="nombre" [(ngModel)]="nombre">
                             </div>
                         </div>
@@ -46,7 +39,7 @@
                                 </div>
                                 <select class="custom-select" id="inputGroupSelect02" name="cuatrimestre"
                                     [(ngModel)]="cuatrimestre">
-                                    <option value="" selected>Elija uno..</option>
+                                    <option value="" selected>Elija un cuatrimestre..</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -83,6 +76,7 @@
                                 </div>
                                 <select class="custom-select" id="inputGroupSelect02" name="profesor"
                                     [(ngModel)]="profesor">
+                                    <option value="" >Elija un profesor..</option>
                                     <option [value]="p.correo" *ngFor="let p of this.profesores">{{p.correo }}</option>
                                 </select>
 
@@ -100,13 +94,13 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-sm">
-                          
-                                <re-captcha (resolved)="resolved($event)" siteKey="6LcZ5cIUAAAAAPYapL22ZChvjyY8uMSSDNdPv0gj"></re-captcha>
-                        </div>
-                    </div>
-            
+                    
+                <div *ngIf="mostrarExito" id="alert-error" class="alert alert-success alert-dismissible fade show"
+                    role="alert">
+                    <strong>{{exito}}</strong>
+                    <button type="button" class="close" (click)="mostrarExito=false">x</button>
+    
+                </div>
 
 
             <div *ngIf="mostrarError" id="alert-error" class="alert alert-danger alert-dismissible fade show"

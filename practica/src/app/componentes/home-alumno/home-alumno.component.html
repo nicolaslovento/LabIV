@@ -1,19 +1,27 @@
-<app-email></app-email>
+<div class="content">
 <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
+    <img src="../../../assets/imagenes/alta-materia.jpg" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a  class="btn btn-primary" (click)="this.router.navigateByUrl('alta-materia-alumno')">Inscribir a materias</a>
+      <h5 class="card-title">Inscribir a materias</h5>
+      <p class="card-text">Aquí se podrá inscribirse a una materia.</p>
+      <a  class="btn btn-primary" (click)="this.router.navigateByUrl('alta-materia-alumno')">Inscribirse a materias</a>
     </div>
   </div>
 
   <div class="card" style="width: 18rem;">
-    <img src="..." class="card-img-top" alt="...">
+    <img src="../../../assets/imagenes/materia.jpg" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      <h5 class="card-title">Mis materias</h5>
+      <p class="card-text">Aquí se verán todas las materias a la que está inscripto.</p>
       <a  class="btn btn-primary" (click)="this.router.navigateByUrl('materias-alumno')">Mis materias</a>
     </div>
   </div>
-
+  <div class="card" style="width: 18rem;">
+    <img src="../../../assets/imagenes/chat.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Chat online</h5>
+      <p class="card-text">Aquí se podrá chatear con otros alumnos según materia.</p>
+      <a  class="btn btn-primary" (click)="this.router.navigateByUrl('chat')">Ir al chat</a>
+    </div>
+  </div>
+</div>

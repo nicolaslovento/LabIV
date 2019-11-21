@@ -22,10 +22,14 @@ export class LoginComponent implements OnInit {
 
     private router:Router,
     private dbService:FirebaseService
-  ) { }
+  ) { 
+    
+      
+  
+  }
 
   ngOnInit() {
-
+    
   }
 
 
@@ -96,7 +100,7 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('home-adm');
       break;
       case 'profesor':
-        this.router.navigateByUrl('home-cliente');
+        this.router.navigateByUrl('home-profesor');
       break;
       case 'alumno':
         this.router.navigateByUrl('home-alumno');
@@ -112,7 +116,10 @@ export class LoginComponent implements OnInit {
       this.dbService.verificarUsuario(this.correo,this.clave).then((user)=>{
         console.log(user);
         localStorage.setItem("user",JSON.stringify(user));
-        this.redireccionar(user);
+        
+          this.redireccionar(user);
+        
+       
 
       }).catch((error)=>{
         this.error=true;

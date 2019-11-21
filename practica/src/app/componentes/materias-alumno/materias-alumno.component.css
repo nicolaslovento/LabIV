@@ -1,0 +1,24 @@
+#btn-atras{
+    position: fixed;
+    top:2%;
+}
+
+.tabla{
+    border-style: solid;
+    border-color: black;
+    padding: 20px;
+    width: 60%;
+    height: 90%;
+}
+
+.content{
+   
+        position: absolute;
+        display: flex;
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        justify-content: center;
+        align-items: initial;
+    
+}

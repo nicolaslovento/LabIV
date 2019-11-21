@@ -1,0 +1,28 @@
+<button id="btn-atras" class="btn btn-success" (click)="this.router.navigateByUrl('home-profesor')">Atras</button>
+
+<div class="content">
+
+  <div class="tabla overflow-auto">
+
+    <div *ngIf="this.misAlumnos">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Numero Materia</th>
+            <th scope="col">Codigo Materia</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Alumno</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let m of this.misAlumnos">
+            <td>{{m.numero}}</td>
+            <td>{{m.materiaId}}</td>
+            <td>{{m.materiaNombre}}</td>
+            <td>{{m.alumno}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

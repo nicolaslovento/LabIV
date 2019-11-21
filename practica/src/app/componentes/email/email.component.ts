@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-email',
@@ -8,13 +10,23 @@ import { Component, OnInit } from '@angular/core';
 export class EmailComponent implements OnInit {
 
   user;
-  constructor() {
+  constructor(private router:Router) {
     
    }
 
   ngOnInit() {
-    this.user=JSON.parse(localStorage.getItem("user"));
+   setInterval(()=>{
+    this.user=JSON.parse(localStorage.getItem("user"))
+   },1000);
+      
+  }
+
+  desloguear(){
+    localStorage.clear();
+    this.user=null;
+    this.router.navigateByUrl('');
     
+   
   }
 
 }

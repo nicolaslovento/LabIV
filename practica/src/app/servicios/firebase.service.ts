@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { CursorError } from '@angular/compiler/src/ml_parser/lexer';
 
 
 @Injectable({
@@ -153,6 +154,30 @@ export class FirebaseService {
 
   }
 
+  modificarMateria(materia: any) {
+
+
+    return new Promise((resolve, rejected) => {
+
+
+
+      this.dbFirestore.collection("materias").doc(materia.id.toString()).update({
+
+        cupos: materia.cupos,
+
+
+
+      }).then(() => {
+
+        resolve();
+
+      }).catch((error) => {
+        rejected(error);
+      });
+
+    })
+  }
+
 
 
   //Carga un producto a la Base de Datos
@@ -172,11 +197,28 @@ export class FirebaseService {
 
 
         }).then(() => {
-          resolve(materia);
+          this.cargarChatMateria(materia).then(() => {
+            resolve();
+          })
         }).catch((error) => {
           rejected(error);
         });
       })
+    })
+  }
+
+  cargarChatMateria(materia: any) {
+
+    return new Promise((resolve, rejected) => {
+      this.dbFirestore.collection("chat").doc(materia.nombre).collection("mensajes").add({
+        autor: "Admin",
+        texto: "En este chat se hablará de la materia. Si insulta será bloqueado.",
+        fecha:new Date().getTime()
+      }).then(() => {
+        resolve(materia);
+      }).catch((error) => {
+        rejected(error);
+      });
     })
   }
 
@@ -196,12 +238,12 @@ export class FirebaseService {
   }
 
   //Carga un producto a la Base de Datos
-  inscribirseAMateria(materia:any, alumno) {
+  inscribirseAMateria(materia: any, alumno) {
 
 
     return new Promise((resolve, rejected) => {
       this.traerIdInscripcion().then((id) => {
-console.log(id);
+        console.log(id);
         this.dbFirestore.collection("alumnos-materias").doc(id.toString()).set({
 
           numero: id.toString(),
@@ -227,9 +269,9 @@ console.log(id);
     return new Promise((resolve, rejected) => {
       this.dbFirestore.collection('alumnos-materias').get().subscribe((inscripciones) => {
         inscripciones.docs.map(insc => {
-          
+
           if (insc.data().alumno == correo) {
-            console.log(insc.data());
+            //console.log(insc.data());
             array.push(insc.data());
           }
 
@@ -240,6 +282,70 @@ console.log(id);
       resolve(array);
     })
   }
+
+  traerMisInscripcionesProfesor(correo) {
+    let array = new Array();
+    return new Promise((resolve, rejected) => {
+      this.dbFirestore.collection('materias').get().subscribe((inscripciones) => {
+        inscripciones.docs.map(insc => {
+
+          if (insc.data().profesor == correo) {
+            //console.log(insc.data());
+            array.push(insc.data());
+          }
+
+
+
+        });
+      })
+      resolve(array);
+    })
+  }
+
+  traerTodasLasInscripciones() {
+    let array = new Array();
+    return new Promise((resolve, rejected) => {
+      this.dbFirestore.collection('alumnos-materias').get().subscribe((inscripciones) => {
+        inscripciones.docs.map(insc => {
+
+
+          //console.log(insc.data());
+          array.push(insc.data());
+
+
+
+
+        });
+      })
+      resolve(array);
+    })
+  }
+
+  traerMensajes() {
+    return this.dbFirestore.collection('chat');
+  }
+
+  guardarMensaje(materia, correo, mensaje, fecha) {
+    return new Promise((resolve, rejected) => {
+
+      this.dbFirestore.collection("chat").doc(materia).collection("mensajes").add({
+
+        autor: correo,
+        texto: mensaje,
+        fecha: fecha
+
+      }).then(() => {
+        resolve();
+      }).catch(() => {
+        rejected();
+      })
+
+
+    })
+
+
+  }
+
 
 }
 

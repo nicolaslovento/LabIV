@@ -20,7 +20,11 @@ import { MiQrComponent } from './componentes/mi-qr/mi-qr.component';
 import  {NgxQRCodeModule} from  'ngx-qrcode2';
 import { HomeAlumnoComponent } from './componentes/home-alumno/home-alumno.component';
 import { AltaMateriaAlumnoComponent } from './componentes/alta-materia-alumno/alta-materia-alumno.component';
-import { MateriasAlumnoComponent } from './componentes/materias-alumno/materias-alumno.component' ; 
+import { MateriasAlumnoComponent } from './componentes/materias-alumno/materias-alumno.component';
+import { MateriasProfesorComponent } from './componentes/materias-profesor/materias-profesor.component';
+import { HomeProfesorComponent } from './componentes/home-profesor/home-profesor.component';
+import { AlumnosProfesorComponent } from './componentes/alumnos-profesor/alumnos-profesor.component';
+import { ChatComponent } from './componentes/chat/chat.component' ; 
 
 
 
@@ -38,7 +42,7 @@ var firebaseConfig = {
 
 
 @NgModule({
-  declarations: [AppComponent,LoginComponent,HomeComponent,AltaMateriaComponent,RegistroComponent, EmailComponent, ListadoMateriasComponent, ListadoUsuariosComponent, MiCaptchaComponent, MiQrComponent, HomeAlumnoComponent, AltaMateriaAlumnoComponent, MateriasAlumnoComponent ],
+  declarations: [AppComponent,LoginComponent,HomeComponent,AltaMateriaComponent,RegistroComponent, EmailComponent, ListadoMateriasComponent, ListadoUsuariosComponent, MiCaptchaComponent, MiQrComponent, HomeAlumnoComponent, AltaMateriaAlumnoComponent, MateriasAlumnoComponent, MateriasProfesorComponent, HomeProfesorComponent, AlumnosProfesorComponent, ChatComponent ],
   imports: [
     FormsModule,
     BrowserModule,

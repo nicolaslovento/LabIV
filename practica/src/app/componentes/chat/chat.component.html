@@ -1,0 +1,36 @@
+<button id="btn-atras" class="btn btn-success" (click)="this.router.navigateByUrl('home-alumno')">Atras</button>
+<div class="content">
+
+
+
+    <div class="ventana-chat overflow-auto">
+
+        <div class="row">
+            <div class="col-sm">
+                <div class="form-group">
+                    <div class="input-group-append">
+                        <label>Elije Materia para chatear:</label>
+                    </div>
+                    <select class="custom-select" id="inputGroupSelect02" name="materia" [(ngModel)]="materia"
+                        (change)="cargarMateria($event.target.value)">
+                        <option [value]="m.nombre" *ngFor="let m of this.materias">{{m.nombre }}</option>
+                    </select>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row" *ngFor="let msj of this.mensajes">
+            <label for=""><b>{{msj.autor}}:</b>{{msj.texto}}</label>
+        </div>
+
+        <div *ngIf="this.mensajes.length>0">
+            <div class="row">
+                <input type="text" [(ngModel)]="mensaje"><button (click)="enviarMensaje()">Enviar</button>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
